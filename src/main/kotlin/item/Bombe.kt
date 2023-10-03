@@ -14,9 +14,3 @@ class Bombe (val nombreDeDes:Int, val maxDes:Int, nom:String, description:String
         println("La bombe a fait $degatsPostProtection points de dégâts à la cible $cible.")
     }
 }
-val grenade = Bombe(
-    5,
-    6,
-    "Grenade",
-    "Une contraception qui explose une fois lancée",
-)

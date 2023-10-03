@@ -18,6 +18,8 @@ class BombeTest {
             defense = 13,
             vitesse = 11,
             endurance = 11,
+            armePrincipal = null,
+            armure = null,
         )
         val grenade = Bombe(
             5,
