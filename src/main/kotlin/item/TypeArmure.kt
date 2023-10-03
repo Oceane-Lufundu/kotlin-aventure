@@ -1,4 +1,8 @@
 package item
 
-class TypeArmure {
-}
+class TypeArmure constructor(
+    var name: String,
+    val bonustype:Int,
+
+
+)

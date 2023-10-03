@@ -10,6 +10,7 @@ package personnage
     var vitesse: Int,
 ) {
 
+
      fun calculeDefense():Int{
          //TODO Mission 4.2
         return this.defense/2;

@@ -12,16 +12,31 @@ class Combat(
     fun tourDeJoueur() {
         println("\u001B[34m ---Tour de ${this.jeu.joueur.nom} (pv: ${this.jeu.joueur.pointDeVie}) ---")
        //TODO Mission 1.2
+
+        println("tape 0 pour attaquer ou 1 pour passer")
+        var choix: Int = readln().toInt()
+        if( choix == 0){
         this.jeu.joueur.attaque(monstre)
         println("\u001b[0m")
+        }
+        else{
+            println("\u001b[0m")
+        }
     }
 
     // Méthode pour simuler un tour de combat du monstre
     fun tourDeMonstre() {
+        var resultat = (1..100).random()
+        val passe : String = "Le monstre ${monstre.nom} passe son tour"
         println("\u001B[31m---Tour de ${monstre.nom} (pv: ${monstre.pointDeVie}) ---")
+        if (resultat <= 70){
+              this.monstre.attaque(this.jeu.joueur)
+                    println("Le monstre ${monstre.nom} a attaqué")
+        }
+        else {
+            println("$passe")
+        }
         //TODO Mission 1.3
-        this.monstre.attaque(this.jeu.joueur)
-        println("\u001b[0m")
     }
 
     // Méthode pour exécuter le combat complet

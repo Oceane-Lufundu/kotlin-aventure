@@ -3,6 +3,7 @@ package jeu
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
+
 internal class TirageDesTest {
     // Test unitaire pour le tirage de Des
     @Test
@@ -21,7 +22,7 @@ internal class TirageDesTest {
         // ou
         //Assertions.assertTrue(resultat in (3..27))
 
-        Assertions.assertEquals("","")
+        Assertions.assertEquals("a","a")
         Assertions.assertNotEquals("a",'a')
         Assertions.assertNotNull("machin")
 
