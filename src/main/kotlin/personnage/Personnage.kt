@@ -66,7 +66,10 @@ class Personnage(
                  pointDeVie = pointDeVieMax
              }
              inventaire.remove(laPotion)
-             println()
+             println("Vous avez bu la potion ${laPotion.nom} et avez récupéré $boire points de vie.")
+         }
+         else {
+             println("Vous n'avez pas de potion dans votre inventaire.")
          }
     }
 
