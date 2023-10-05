@@ -1,0 +1,4 @@
+package personnage
+
+class Mage {
+}

@@ -71,7 +71,7 @@ class Jeu(monstres: List<Personnage>) {
 //            totalscore = scoreAtk + scoreDef + scoreEND + scoreEND
         } while (totalscore < 0)
 
-        val hero = Personnage(name, 150, 150, 12, 8, 8, 12)
+        val hero = Personnage(name, 150, 150, 12, 8, 8, 12,null,null)
         this.joueur = hero
         return hero
     }

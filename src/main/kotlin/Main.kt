@@ -47,7 +47,12 @@ val armure1= Armure("cotte de maille", "Cotte de mailles plus lourde mais aussi 
 val armure2= Armure("Le manteau de la nuit","Armure en cuire obscure comme la nuit",qualiteEpic,typearmure2)
 val armure3= Armure("Armure du gobelin","Armure en cuir rudimentaire",qualiteCommun,typearmure3)
 
-
+val grenade = Bombe(
+    5,
+    6,
+    "Grenade",
+    "Une contraception qui explose une fois lancée",
+)
 // TODO Intermission 1 Ajouter d'autres monstres
 //On ajoute les monstres a la liste de monstres du jeu
 fun main(args: Array<String>) {

@@ -22,6 +22,7 @@ class Arme constructor(nom: String, description: String, val qualite: Qualite, v
      }
 
      override fun utiliser(cible: Personnage)  {
+         cible.equipe(this)
      }
 }
 

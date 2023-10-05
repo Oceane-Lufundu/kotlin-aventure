@@ -1,5 +1,8 @@
 package jeu
 
+import item.Arme
+import item.Bombe
+import item.Potion
 import personnage.Personnage
 
 class Combat(
@@ -12,15 +15,33 @@ class Combat(
     fun tourDeJoueur() {
         println("\u001B[34m ---Tour de ${this.jeu.joueur.nom} (pv: ${this.jeu.joueur.pointDeVie}) ---")
        //TODO Mission 1.2
-
-        println("tape 0 pour attaquer ou 1 pour passer")
+        println("tape 0 pour attaquer ou 1 pour boire une potion ou 2 pour utiliser un objet de l'inventaire ")
         var choix: Int = readln().toInt()
         if( choix == 0){
         this.jeu.joueur.attaque(monstre)
         println("\u001b[0m")
         }
-        else{
+        else if( choix == 1){ // permet au joueur de boire une potion
+            this.jeu.joueur.boirePotion()
             println("\u001b[0m")
+        }
+        else { //permet au jouer de choisir puis d'utiliser un objet de l'inventaire
+            this.jeu.joueur.afficheInventaire()
+            println("tape le numéro de l'objet à utiliser : ")
+            var choix_objet: Int = readln().toInt()
+            val objet= this.jeu.joueur.inventaire[choix_objet]
+
+            if(objet is Bombe) {
+                objet.utiliser(this.monstre)
+            }
+
+            else{
+                objet.utiliser(this.jeu.joueur)
+            }
+
+
+
+
         }
     }
 
@@ -33,9 +54,13 @@ class Combat(
               this.monstre.attaque(this.jeu.joueur)
                     println("Le monstre ${monstre.nom} a attaqué")
         }
+        else if (monstre.pointDeVieMax / 2 < monstre.pointDeVie && resultat <= 80){
+            monstre.boirePotion()
+        }
         else {
             println("$passe")
         }
+
         //TODO Mission 1.3
     }
 
