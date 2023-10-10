@@ -9,30 +9,28 @@ val qualiteEpic = Qualite("epic", 2, "\u001B[35m")
 val qualiteLegendaire = Qualite("legendaire", 3, "\u001B[33m")
 
 //CREATION DE L'INVENTAIRE
-
-//création des bombe et des potions
+//création des bombes
 val bombe1 = Bombe(4,6,"Feu grégeois","Une flasque qui contient un liquide inflammable.")
 val bombe2 = Bombe(2,8,"Flasque dacide","Une flasque qui contient un liquide inflammable.")
 val bombe3 = Bombe(5,6,"Grenade","Une flasque qui contient un liquide inflammable.")
+
+//création des potions
 val potion1 = Potion(20,"Potion de soins","Une potion qui contient un liquide rouge.")
 val potion2 = Potion(30,"Grande potion de soins","Une contraception qui explose une fois lancée.")
 
-//création des armes et type d'armes
-
-
+//création des types d'armes
 val typearme1 = TypeArme(1,4,3,18)
 val typearme2 = TypeArme(1,8,2,19)
 val typearme3 = TypeArme(1,8,3,20)
 val typearme4 = TypeArme(1,8,3,20)
 val typearme5 = TypeArme(1,8,3,20)
 
+//création des armes
 val arme1 =Arme("Légendaire","Une dague légendaire en mithril ",qualiteLegendaire ,typearme1)
 val arme2 = Arme("Epée longue du droit","Une épée en fer froid",qualiteRare,typearme2)
 val arme3 = Arme("Lance du kobold","Une lance rudimentaire",qualiteCommun,typearme3)
 val arme4 = Arme("Hache +2","Une hache tranchante",qualiteEpic,typearme4)
 val arme5 = Arme("Tonnerre","Un marteau légendaire frappe comme la foudre",qualiteLegendaire ,typearme5)
-
-
 
 //création des types d'armure
 val typearmure1= TypeArmure("Rembourré",1)

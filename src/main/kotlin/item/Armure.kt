@@ -5,7 +5,7 @@ import personnage.Personnage
 class Armure constructor( nom: String, description: String, val qualite: Qualite, val typeArmure: TypeArmure):Item(nom, description)
  {
     fun calculProtection(): Int {
-        var protection = this.typeArmure.bonusType + this.qualite.bonusRarete
+        var protection = this.typeArmure.bonusType + this.qualite.bonusRarete // = Bonus de protection
         return protection
     }
 

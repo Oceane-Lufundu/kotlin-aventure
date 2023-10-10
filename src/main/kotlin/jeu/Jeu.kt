@@ -1,6 +1,13 @@
 package jeu
 
+import arme1
+import arme2
+import armure1
+import armure2
+import personnage.Guerrier
+import personnage.Mage
 import personnage.Personnage
+import personnage.Voleur
 
 
 class Jeu(monstres: List<Personnage>) {
@@ -40,39 +47,61 @@ class Jeu(monstres: List<Personnage>) {
      *
      */
     fun creerPersonnage(): Personnage {
-        println("Création votre personnage:")
-        println("saisissez votre nom")
+        println("Créez votre personnage:")
+        println("saisissez votre nom") //L'utilisateur saisit le nom du personnage.
         // TODO Mission 1.1
-        val name: String = readln()
+        val nom: String = readln()
         println("vous avez 40 points à répartir ")
-        var scoreAtk = 0
-        var scoreVIT = 0
-        var scoreDef = 0
-        var scoreEND = 0
+        var scoreAtk = 0 // attaque
+        var scoreVIT = 0 // vitesse
+        var scoreDef = 0 // défense
+        var scoreEND = 0 // endurance
         var totalscore: Int
 
         do {
             totalscore = 40
-            println("Saisissez votre score d'attaque : ")
-            var scoreAtk: Int = readln().toInt()
-            totalscore -= scoreAtk
+            println("Saisissez votre score d'attaque : ") // Saisit scores attaque
+             scoreAtk= readln().toInt()
+            totalscore -= scoreAtk // 40 est soustrait par le score
 
-            println("Saisissez votre score de défense : ")
-            var scoreDef: Int = readln().toInt()
-            totalscore -= scoreDef
+            println("Saisissez votre score de défense : ") //Saisit scores défense
+             scoreDef = readln().toInt()
+            totalscore -= scoreDef // 40 est soustrait par le score
 
-            println("Saisissez votre score de vitesse : ")
-            var scoreVIT: Int = readln().toInt()
-            totalscore -= scoreVIT
+                    println("Saisissez votre score de vitesse : ") //Saisit scores vitesse
+             scoreVIT = readln().toInt()
+            totalscore -= scoreVIT // 40 est soustrait par le score
 
-            println("Saisissez votre score d'endurance : ")
-            var scoreEND: Int = readln().toInt()
+            println("Saisissez votre score d'endurance : ") //Saisit scores endurance
+             scoreEND = readln().toInt()
             totalscore -= scoreEND
 //            totalscore = scoreAtk + scoreDef + scoreEND + scoreEND
         } while (totalscore < 0)
+        val pv= 50 +(10*scoreEND)
 
-        val hero = Personnage(name, 150, 150, 12, 8, 8, 12,null,null)
+        println("Choisissez la classe de votre personnage :") //demande de choisir la classe de son personnage
+        println("Tapez 0 pour Voleur, Tapez 1 pour mage ou Tapez 2 pour guerrier : ")
+
+        var choix_classe:Int = readln().toInt()
+        var hero = Personnage(nom, pv, pv, scoreAtk, scoreDef, scoreEND, scoreVIT,null,null)
+        if (choix_classe == 0){ //En fonction du choix de l'utilisateur, il faut instancier le bon type de personnage
+            hero = Voleur(nom, pv, pv, scoreAtk, scoreDef, scoreEND, scoreVIT,null,null, mutableListOf())
+        }
+        else if (choix_classe == 1) {
+            hero = Mage(nom, pv, pv, scoreAtk, scoreDef, scoreEND, scoreVIT,null,null, mutableListOf(),mutableListOf())
+           // hero.armure=armure1
+        }
+        else {
+            hero = Guerrier(nom, pv, pv, scoreAtk, scoreDef, scoreEND, scoreVIT,null,null,mutableListOf())
+        }
+
+
+
+
         this.joueur = hero
         return hero
+
+
     }
+
 }
