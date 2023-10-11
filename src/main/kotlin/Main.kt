@@ -1,6 +1,9 @@
 import item.*
 import jeu.Jeu
+import jeu.TirageDes
+import personnage.Mage
 import personnage.Personnage
+import personnage.Sort
 
 //instanciation des qualités des objets
 val qualiteCommun = Qualite("commun", 0, "\u001B[32m")
@@ -51,6 +54,20 @@ val grenade = Bombe(
     "Grenade",
     "Une contraception qui explose une fois lancée",
 )
+//Création de sorts
+val guerison = Sort("Sort de guérison"){ joueur, cible-> Unit
+    run{
+        val des = TirageDes(1,6)
+        var soins = des.lance()
+        soins = maxOf(1, soins + joueur.attaque / 2)
+        joueur.pointDeVie += soins
+        if(joueur.pointDeVie > joueur.pointDeVieMax){
+            joueur.pointDeVie = joueur.pointDeVieMax
+        }
+        println("Le sort de guérison donne $soins points de soin à ${joueur.nom}")
+    }
+}
+
 // TODO Intermission 1 Ajouter d'autres monstres
 //On ajoute les monstres a la liste de monstres du jeu
 fun main(args: Array<String>) {

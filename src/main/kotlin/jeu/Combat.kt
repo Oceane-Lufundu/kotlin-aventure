@@ -16,7 +16,7 @@ class Combat(
         println("\u001B[34m ---Tour de ${this.jeu.joueur.nom} (pv: ${this.jeu.joueur.pointDeVie}) ---")
        //TODO Mission 1.2
         //Le joueur est invité à choisir une action parmi les options affichées
-        println("tape 0 pour attaquer ou 1 pour boire une potion ou 2 pour utiliser un objet de l'inventaire ")
+        println("tape 0 pour attaquer ou 1 pour boire une potion ou 2 pour voler ou 3pour utiliser un objet de l'inventaire ")
         var choix: Int = readln().toInt()
         if( choix == 0){
         this.jeu.joueur.attaque(monstre)
@@ -24,6 +24,10 @@ class Combat(
         }
         else if( choix == 1){ // permet au joueur de boire une potion
             this.jeu.joueur.boirePotion()
+            println("\u001b[0m") //
+        }
+        else if( choix == 2){ // permet au joueur de boire une potion
+            this.jeu.joueur.voler(monstre)
             println("\u001b[0m") //
         }
         else { //permet au jouer de choisir puis d'utiliser un objet de l'inventaire

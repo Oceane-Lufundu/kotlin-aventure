@@ -22,7 +22,7 @@ open class Personnage(
 
 
     // Methode pour équiper le personnage d'une arme
-    fun equipe(arme: Arme) { //prend en paramètre une arme.
+    open fun equipe(arme: Arme) { //prend en paramètre une arme.
         if (arme in inventaire) { //vérifie si l’arme (paramètre) est dans l’inventaire du personnage
             armePrincipal == arme //alors elle devient l’arme principale
         }
@@ -57,16 +57,16 @@ open class Personnage(
         }
 
     // Méthode pour attaquer un adversaire
-    fun attaque(adversaire: Personnage) {
+    open fun attaque(adversaire: Personnage) {
         //TODO Mission 4.1
-        var degats = this.attaque /2
+        var degats = this.attaque /2 //calcul les degats de base
         if(armePrincipal != null) { //vérifie s'il a une arme équipée.
             degats += armePrincipal!!.calculerDegat() //Les dégâts infligés à l'adversaire sont calculés.
         }
         if (degats< 1){
             degats == 1
         }
-        adversaire.pointDeVie -= degats
+        adversaire.pointDeVie -= degats //on retire des point de vie à l'adversaire
         println("$nom attaque ${adversaire.nom} avec ${this.armePrincipal!!} et inflige $degats points de dégâts.")
     }
 

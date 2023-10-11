@@ -19,6 +19,7 @@ class Voleur (nom:String, pointDeVie:Int, pointDeVieMax:Int, attaque:Int, defens
                     inventaire.remove(objectVolee)
                     cible.armePrincipal = null
                     break
+                    println("Vous avez volé(e) ${objectVolee} de ${cible}")
                 }
                 else if(item == armure){
                     break
@@ -26,12 +27,14 @@ class Voleur (nom:String, pointDeVie:Int, pointDeVieMax:Int, attaque:Int, defens
                     this.inventaire+=objectVolee
                     inventaire.remove(objectVolee)
                     cible.armure = null
+                    println("Vous avez volé(e) ${objectVolee} de ${cible}")
                 }
                 else {
                     break
                     objectVolee = item
                     this.inventaire+=objectVolee
                     inventaire.remove(objectVolee)
+                    println("Vous avez volé(e) ${objectVolee} de ${cible}")
                 }
             }
         }

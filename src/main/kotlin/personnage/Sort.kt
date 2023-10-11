@@ -1,5 +1,7 @@
 package personnage
 
+import jeu.TirageDes
 
-class Sort constructor(nom: String, effet:(Personnage,Personnage)->Unit ){
+
+class Sort constructor(val nom: String,val effet:(Personnage,Personnage)->Unit ){
 }
