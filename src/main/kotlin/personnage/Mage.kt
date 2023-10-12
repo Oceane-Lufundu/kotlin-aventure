@@ -11,18 +11,19 @@ class Mage constructor( nom: String, pointDeVie: Int, pointDeVieMax: Int, attaqu
         return super.toString()
     }
     fun afficheGrimoire() {
-        for (unSort in this.grimoire) {
-
+        println("Grimoire ${this.nom}") //affiche tous les sorts présents dans le grimoire
+        for(unSort in this.grimoire) {
+            println("${grimoire.indexOf(unSort)} => ${unSort.nom}")// affiche l'index de chaque sort
         }
-
     }
-
-    fun choisirEtLancersort(monstre:Personnage) {
+    fun choisirEtLancersort(monstre:Personnage) { //Invoquer la méthode afficherGrimoire() puis demander à l'utilisateur de choisir un sort.
         this.afficheGrimoire()
-
-        this.grimoire[0].effet(this,monstre)
+        println("choisis une cible: Tape 1 Pour joueur; 2 pour monstre")//l’utilisateur choisis la cible du sort
+        var choixsort = readln().toInt()
+        println("choix du sort: Tape 0 = Boule de feu; 1 = Sort de soins") //l'utilisateur choisis un sort.
+        this.grimoire[choixsort].effet(this,monstre)
         for (choixSort in this.grimoire) {
         }
-        println("${afficheGrimoire()} choisir ${this.grimoire}") //Invoquer la méthode afficherGrimoire() puis demander à l'utilisateur de choisir un sort.
+        println("${afficheGrimoire()} choisir ${this.grimoire}")
     }
 }

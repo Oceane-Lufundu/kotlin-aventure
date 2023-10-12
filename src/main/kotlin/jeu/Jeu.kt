@@ -2,12 +2,18 @@ package jeu
 
 import arme1
 import arme2
+import armeMagique
 import armure1
 import armure2
+import armureMagique
+import bouleDeFeu
+import guerison
+import missileMagique
 import personnage.Guerrier
 import personnage.Mage
 import personnage.Personnage
 import personnage.Voleur
+import projectionAcide
 
 
 class Jeu(monstres: List<Personnage>) {
@@ -88,11 +94,12 @@ class Jeu(monstres: List<Personnage>) {
             hero = Voleur(nom, pv, pv, scoreAtk, scoreDef, scoreEND, scoreVIT,null,null, mutableListOf())
         }
         else if (choix_classe == 1) {
-            hero = Mage(nom, pv, pv, scoreAtk, scoreDef, scoreEND, scoreVIT,null,null, mutableListOf(),mutableListOf())
+            hero = Mage(nom, pv, pv, scoreAtk, scoreDef, scoreEND, scoreVIT,null,null, mutableListOf(),mutableListOf(projectionAcide,guerison,bouleDeFeu,missileMagique,armeMagique,armureMagique))
+
            // hero.armure=armure1
         }
         else {
-            hero = Guerrier(nom, pv, pv, scoreAtk, scoreDef, scoreEND, scoreVIT,null,null,mutableListOf())
+            hero = Guerrier(nom, pv, pv, scoreAtk, scoreDef, scoreEND, scoreVIT,null,null,null,mutableListOf())
         }
 
 

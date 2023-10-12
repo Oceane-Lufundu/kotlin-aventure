@@ -53,6 +53,7 @@ class Guerrier constructor(nom:String,
         if (degat<1){
             degat=1 //un score de degat sera quand même infligé même si celui-ci est inférieur à 1
         }
+        println("$nom attaque ${adversaire.nom} avec ${this.armeSecondaire!!} et inflige $degat points de dégâts.")
 
     }
 

@@ -48,23 +48,111 @@ val armure1= Armure("cotte de maille", "Cotte de mailles plus lourde mais aussi 
 val armure2= Armure("Le manteau de la nuit","Armure en cuire obscure comme la nuit",qualiteEpic,typearmure2)
 val armure3= Armure("Armure du gobelin","Armure en cuir rudimentaire",qualiteCommun,typearmure3)
 
-val grenade = Bombe(
-    5,
-    6,
-    "Grenade",
-    "Une contraception qui explose une fois lancée",
-)
+// TODO Intermission 8
 //Création de sorts
+val projectionAcide = Sort("Sort de projection d'acide"){ joueur, cible-> Unit
+    run{
+        val des = TirageDes(1,10)
+        var degats = des.lance()
+        degats = maxOf(1, degats - cible.calculeDefense())//calcul les dégats
+        cible.pointDeVie -= degats//réduit les points de vie de la cible
+        println("Le sort de projection d'acide inflige $degats points de dégats à ${cible.nom}")
+    }
+}
+//création du sort de guérison
 val guerison = Sort("Sort de guérison"){ joueur, cible-> Unit
     run{
-        val des = TirageDes(1,6)
-        var soins = des.lance()
+        val des = TirageDes(1,6) //crétion de l'objet TirageDes
+        var soins = des.lance()//appelle de la méthode lance()
         soins = maxOf(1, soins + joueur.attaque / 2)
-        joueur.pointDeVie += soins
+        joueur.pointDeVie += soins //application des soins à la cible
         if(joueur.pointDeVie > joueur.pointDeVieMax){
             joueur.pointDeVie = joueur.pointDeVieMax
         }
         println("Le sort de guérison donne $soins points de soin à ${joueur.nom}")
+    }
+}
+
+//création du sort de boule de feu
+val bouleDeFeu = Sort("Sort de boule de feu"){ joueur, cible-> Unit
+    run{
+        var degatCaster = joueur.attaque/3
+        val des = TirageDes(1,6)//crétion de l'objet TirageDes
+        var degats = des.lance()//appelle de la méthode lance()
+        degats+=degatCaster
+        degats = maxOf(1, degats - cible.calculeDefense())//calcul les dégats
+        cible.pointDeVie -= degats//réduit les points de vie de la cible
+        println("Le sort de boule de feu inflige $degats points de dégats à ${cible.nom}")
+    }
+}
+
+// sort de lancement de missile
+val missileMagique = Sort("Sort de missile magique"){ joueur, cible-> Unit
+    run{
+        val des = TirageDes(1,6)//crétion de l'objet TirageDes
+        var compteur = joueur.attaque/2 // calcul le nombre de tour de la boucle
+
+        /**Le joueur tire des missiles magiques en boucle et le nombre de tour
+         * correspond à son score d'attaque divisé par deux
+         */
+        repeat(compteur) {
+            var degats = des.lance()//appelle de la méthode lance()
+            degats = maxOf(1, degats - cible.calculeDefense())//calcul les dégats
+            cible.pointDeVie -= degats//réduit les points de vie de la cible
+            println("Le sort de missile magique inflige $degats points de dégats à ${cible.nom}")
+        }
+    }
+}
+
+
+val armeMagique = Sort("utilisation d'arme magique"){ joueur, cible-> Unit
+    run{
+        val des = TirageDes(1,20)//tire un dé
+        var resultats = des.lance()
+        /**la qualité de l'arme sera défini
+         * en fonction de la valeur du dé lancé
+         */
+        var qualite: Qualite?= null
+        if (resultats < 5) {
+            qualite = qualiteCommun
+        }
+        else if (resultats < 10){
+            qualite = qualiteRare
+        }
+        else if (resultats < 15){
+            qualite = qualiteEpic
+        }
+        else{
+            qualite = qualiteLegendaire
+        }
+        val epee = Arme("Epée longue ","Une épée en fer froid",qualite,typearme2)//creer une épee
+        joueur.inventaire.add(epee)
+        println("Une arme magique a été ajoutée à l'inventaire")
+        joueur.equipe(epee)//ajoute l'epee dans l'inventaire
+    }
+}
+//invoque une armure magique
+val armureMagique = Sort("Armure magique"){ joueur, cible-> Unit
+    run{
+        val des = TirageDes(1,20)//création de l'oje
+        var degats = des.lance() //appelle de la méthode lance()
+        var qualite: Qualite? = null //déclaration d'une variable
+        if (degats < 5){
+            qualite = qualiteCommun
+        }
+        else if (degats<10){
+            qualite = qualiteRare
+        }
+        else if (degats<15){
+            qualite = qualiteEpic
+        }
+        else{
+            qualite = qualiteLegendaire
+        }
+        var armureMagique = Armure("Armure magique", "Une armure en cuir d'apparence mystérieuse, imprégnée de magie.",qualite, typearmure2) //création de l'armure magique
+        joueur.inventaire += armureMagique //ajoute l'armure dans l'inventaire
+        println("Une armure magique est ajoutée à l'inventaire") //affichage d'une message
+        joueur.equipe(armureMagique) //équipe la cible de l'armure
     }
 }
 

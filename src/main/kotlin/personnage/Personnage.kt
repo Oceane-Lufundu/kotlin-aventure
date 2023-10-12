@@ -63,8 +63,9 @@ open class Personnage(
         if(armePrincipal != null) { //vérifie s'il a une arme équipée.
             degats += armePrincipal!!.calculerDegat() //Les dégâts infligés à l'adversaire sont calculés.
         }
+        degats-= adversaire.calculeDefense()
         if (degats< 1){
-            degats == 1
+            degats = 1
         }
         adversaire.pointDeVie -= degats //on retire des point de vie à l'adversaire
         println("$nom attaque ${adversaire.nom} avec ${this.armePrincipal!!} et inflige $degats points de dégâts.")
@@ -128,10 +129,10 @@ open class Personnage(
 
     fun loot(cible:Personnage){
         if (cible.pointDeVie <= 0){ //On vérifie que la cible a des pv inférieure ou égale à 0.
-            this.inventaire += cible.inventaire
+            this.inventaire += cible.inventaire //on transfère son inventaire a l’objet courant
             cible.inventaire= mutableListOf()
-            cible.armePrincipal = null
-            cible.armure = null
+            cible.armePrincipal = null //on remplace l’arme principale de la cible par null
+            cible.armure = null//et son armure par null
         }
     }
     override fun toString(): String {
